@@ -1,0 +1,19 @@
+{% extends 'myapp/Base.html'%}
+
+
+
+
+{%block content%}
+    <p>Welcome</p>
+    <h1>{{student.user.first_name}} {{student.user.last_name}} </h1>
+    <p>ID No: {{student.matric_no }} </p>
+    <p>Department: {{student.course_of_study}} </p>
+
+    <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" href="{% url 'grade_result'%}" rel="noopener noreferrer">View Results</a><br>
+            <a class="btn btn-primary" href="{% url 'submit_ass'%}"  rel="noopener noreferrer">Submit Assignment</a><br>
+            
+            <a class="btn btn-primary" href="{% url 'sprofile' %}">View Profile</a>
+    </div>
+    
+{% endblock%}

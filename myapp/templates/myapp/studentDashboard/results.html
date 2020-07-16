@@ -1,0 +1,22 @@
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+  <h1>Assignment graded by lecturer</h1>
+
+    {% for grade in grades %}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <p>LECTURER: {{ grade.lecturer.first_name }} {{ grade.lecturer.last_name }}</p>
+        <!-- <p>{{grade.student.user }}</p> -->
+        <p>MATRIC NO: {{grade.student.matric_no }}</p>
+        <p>GRADE: {{grade.gradd}}</p>
+      </li>
+    </ul>
+    {% empty %}
+          <p>No Assignment Graded </p>
+    {% endfor %}
+
+
+    
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+    {% for lg in listGraded %}
+         <div class="h">
+           <h2>{{lg.student.user}}</h2>
+           <h2>{{lg.student.matric_no}}</h2>
+           <h2>{{ lg.student.course_of_study}}</h2>
+           <h2>{{lg.point}}<span">({{lg.gradd}})</span></h2>
+         </div>
+    {% empty %}
+        <p>No Graded Assignments</p>
+    {% endfor %} 
+
+{%endblock %}

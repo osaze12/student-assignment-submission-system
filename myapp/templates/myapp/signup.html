@@ -1,0 +1,56 @@
+
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+<h1>The signup page</h1>
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    <div class="h">
+    <p>{{ form.first_name.errors }}</p>
+    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+    {{ form.first_name }}
+    </div>
+    <div class="h">
+    <p>{{ form.last_name.errors }}</p>
+    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+    {{ form.last_name }}
+    </div>
+    <div class="h">
+    <p>{{ form.username.errors }}</p>
+    <label for="{{ form.username.id_for_label }}">User Name:</label>
+    {{ form.username }}
+    </div>
+    <div class="h">
+        <p>{{ form.email.errors }}</p>
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+        </div>
+    <div class="h">
+    <p>{{ form.matric_no.errors }}</p>
+    <label for="{{ form.matric_no.id_for_label }}">Matric No (without slash /):</label>
+    {{ form.matric_no }}
+    </div>
+    <div class="h">
+    <p>{{ form.course_of_study.errors }}</p>
+    <label for="{{ form.course_of_study.id_for_label }}">Course Of Study</label>
+    {{ form.course_of_study }}
+    </div>
+    <div class="h">
+    <p>{{ form.password1.errors }}</p>
+    <label for="{{ form.password1.id_for_label }}">Password:</label>
+    {{ form.password1 }}
+    </div>
+    <div class="h">
+    <p>{{ form.password2.errors}}</p>
+    <label for="{{ form.password2.id_for_label }}">Comfirm Password:</label>
+    {{ form.password2 }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% endblock %}

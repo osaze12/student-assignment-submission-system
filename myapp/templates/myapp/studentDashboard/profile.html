@@ -1,0 +1,17 @@
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+
+    <p>Full Name: {{ student.user.first_name }} {{ student.user.last_name }}</p>
+    <p>{{ student.user.email }}</p>
+    <p>{{ student.user.username }}</p>
+    <p>{{ student.matric_no }}</p>
+    <p>{{ student.course_of_study }}</p>
+
+
+
+
+
+
+{% endblock %}

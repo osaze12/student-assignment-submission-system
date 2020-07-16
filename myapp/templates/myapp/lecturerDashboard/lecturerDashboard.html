@@ -1,0 +1,78 @@
+
+{% extends 'myapp/Base.html'%}
+
+
+
+
+{% block content %}
+     <h1 class="text-center">Lecturer (Mr {{lecturer}}) Dashboard</h1>
+     <div class="container-fluid">
+        <div class="row">
+           <div class="col-sm-4">
+         {% if xfrom and xto %}
+           <p>Current duration for submission</p>
+           <p> <mark> Collect from <span>{{ xfrom.day }} {{xfrom.week }}, of {{xfrom.month}} {{ xfrom.year}}, by {{xfrom.hr}}:{{xfrom.min}}</span></mark></p> 
+           <p><mark> Stop at <span>{{ xto.day }} {{ xto.week }}, of {{ xto.month }} {{ xto.year }}, by {{xto.hr}}:{{xto.min}} </span></mark></p>
+         {% else %}
+           <h2>Current duration for submission</h2>
+           <p>None</p>
+         {% endif %}
+
+         <p><strong>Set Duration for Assignments </strong></p>
+         <form class="form-group" method="post">
+         {% csrf_token %}
+      
+         {{ form.non_field_errors }}
+         <p>From: {{datetime.month}}/{{datetime.day}}/{{datetime.year}} {{ datetime.hour}}:{{datetime.minute}}</p>
+         <div class="form-inline">
+             <p>{{ form.to_datetime.errors }}</p>
+             <label for="{{ form.to_datetime.id_for_label }}">To: </label>
+             {{ form.to_datetime }}
+             <button type="submit" class="btn btn-success">Set</button>
+         </div>
+        
+         </form>
+
+         <div class="llinks">
+       <a href="{% url 'listGradedAss'%}">Graded</a><br>
+       <a href="{% url 'listNotGradedAss'%}">Not Graded yet</a>
+       
+         </div>
+           </div>
+
+
+           <div class="col-sm-8">
+         {% if oo %}
+             <p class="">All Students That Submitted Assignments <span class="badge badge-info"> No: {{ oo|length }}</span></p>
+             
+             {% for li in oo %}
+               <div class="studentLink">
+                  <ul class="list-group">
+                     <li class="list-group-item">
+                        <p>Matric No: {{ li.student.matric_no }}</p>
+                        <p>Grade: <span>{{ li.gradd }}</span></p>
+
+                        <div class="btn-group btn-group-sm">
+                           <button type="button" class="btn btn-light"><a href="{{li.document.url}}" download >Download</a></button> 
+                           <button type="button" class="btn btn-light"><a href="{% url 'view_ass' student=li.student.id  %}">View pdf</a></button> 
+                           <button type="button" class="btn btn-light"><a href="{%url 'edit_grade' lecturer=li.lecturer.id student=li.student.id  %}">Grade Student</a></button> 
+                        </div>
+              
+                        
+                     </li>
+                  </ul>
+
+                    
+                </div>
+             {% endfor %}
+         {% else %}
+            <div class="h">
+               <p>Sorry, no student has submitted any Assignment to you Yet.</p>
+            </div>
+         {%endif %}
+           </div>
+        </div>
+     </div>    
+ 
+
+{% endblock%}

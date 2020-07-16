@@ -1,0 +1,12 @@
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+  <h1>Submit your Assigmnent</h1>
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p }}
+      <button type="submit" class="btn btn-success">Send Assignment</button>
+  </form>
+
+{% endblock %}

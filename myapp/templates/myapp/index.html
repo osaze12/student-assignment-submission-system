@@ -1,0 +1,13 @@
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+<h1 class="">Assignment Submission System</h1>
+<a href="{% url 'teacherlogin' %}">Teacher Login</a>
+<a href="{% url 'studentlogin' %}">Student Login</a>
+<p>Already logged-in?</p>
+<a href="{% url 'lecturerDashboard' %}"> LecturerDashboard</a>
+<a href="{% url 'studentDashboard' %}"> StudentDashboard</a>
+
+
+{% endblock %}

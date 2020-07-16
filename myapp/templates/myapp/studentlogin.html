@@ -1,0 +1,13 @@
+{% extends 'myapp/Base.html'%}
+
+
+{%block content%}
+
+        <h1 class="">Student login page</h1>
+        <form class="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-success">Login</button>
+        </form>
+
+{% endblock %}
